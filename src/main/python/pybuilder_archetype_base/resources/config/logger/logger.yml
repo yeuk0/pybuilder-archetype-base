@@ -1,0 +1,36 @@
+version: 1
+formatters:
+  brief:
+    format: '[%(threadName)s] %(levelname)-7s [%(name)s] %(message)s'
+  precise:
+    format: '%(asctime)s [%(threadName)s] %(levelname)s [%(name)s.%(module)s] %(message)s'
+    datefmt: '%Y-%m-%d %H:%M:%S'
+handlers:
+  debug:
+    class: utils.loggers.handlers.DirFileHandler
+    formatter: precise
+    filename: debug.log
+    maxBytes: 5242880
+    backupCount: 20
+    level: INFO
+  console:
+    class: logging.StreamHandler
+    formatter: brief
+    level: INFO
+    stream: ext://sys.stdout
+loggers:
+  main:
+    level: DEBUG
+    handlers: [console, debug]
+  core:
+    level: DEBUG
+    handlers: [console, debug]
+    propagate: no
+  apis:
+    level: DEBUG
+    handlers: [console, debug]
+    propagate: no
+  utils:
+    level: DEBUG
+    handlers: [console, debug]
+    propagate: no
