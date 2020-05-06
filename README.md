@@ -30,7 +30,7 @@ src
     |   ├── __init__.py
     |   └── helpers.py
     └── __init__.py
-tests  # For every custom exception made
+tests
 ├── __init__.py
 └── example_test.py
 .gitignore
