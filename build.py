@@ -25,7 +25,7 @@ use_plugin('python.distutils')
 use_plugin('pypi:pybuilder_pycharm_workspace')
 
 name = 'pybuilder-archetype-base'
-version = '0.1.0'
+version = '0.1.1'
 license = "Apache License, Version 2.0"
 
 authors = [Author("Arturo GL", 'r2d2006@hotmail.com'), Author("Diego BM", 'diegobm92@gmail.com')]
