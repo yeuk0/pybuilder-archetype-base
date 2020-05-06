@@ -53,7 +53,7 @@ def initialise_plugin(project):
 		'UTILS': Path('utils')
 	}
 	packages_2nd = {
-		'UTILS_LOGGER': packages['UTILS'] / 'loggers',
+		'UTILS_LOGGING': packages['UTILS'] / 'logging',
 		'ERRORS_CORE': packages['ERRORS'] / 'core'
 	}
 	packages.update(packages_2nd)
@@ -73,8 +73,8 @@ def initialise_plugin(project):
 		'CONSTANTS': packages['CONFIG'] / 'constants.py',
 		'MESSAGES': packages['CONFIG'] / 'messages.py',
 		'LOGGER_YML': packages['CONFIG'] / 'logger' / 'logger.yml',
-		'LOGGER_INIT': packages['UTILS_LOGGER'] / '__init__.py',
-		'LOGGER_HANDLERS': packages_2nd['UTILS_LOGGER'] / 'handlers.py',
+		'LOGGER_INIT': packages['UTILS_LOGGING'] / '__init__.py',
+		'LOGGER_HANDLERS': packages_2nd['UTILS_LOGGING'] / 'handlers.py',
 		'HELPERS': packages['UTILS'] / 'helpers.py'
 	}
 	project.set_property('base_templates_second_level', templates_second_level)
