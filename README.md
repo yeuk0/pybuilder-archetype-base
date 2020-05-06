@@ -64,8 +64,8 @@ Configure the plugin within your `init` function:
 ```python
 @init
 def initialise(project):
-    project.set_property('project_base_path', Path(__file__).parent)
-    project.set_property('pycharm_workspace_project_path', Path(__file__).parent)
+    project.set_property('project_base_path', project_path)
+    project.set_property('pycharm_workspace_project_path', project_path)
 ```
 
 This will tell the plugin which is the project location in the filesystem. `project_base_path` property value should be
@@ -97,7 +97,9 @@ use_plugin('python.unittest')
 use_plugin('pypi:pybuilder_pycharm_workspace')
 use_plugin('pypi:pybuilder_archetype_base')
 
-name = Path(__file__).parent.name
+project_path = Path(__file__).resolve().parent
+
+name = project_path.name
 authors = [Author("foo", 'bar')]
 license = "Apache License, Version 2.0"
 version = '1.0.0'
@@ -107,13 +109,13 @@ version = '1.0.0'
 def initialise(project):
     project.depends_on_requirements('requirements.txt')
 
-    project.set_property('dir_source_main_python', Path(__file__).parent / 'src')
+    project.set_property('dir_source_main_python', 'src')
 
     project.set_property('dir_source_unittest_python', 'tests')
     project.set_property('unittest_module_glob', 'test_*')
 
-    project.set_property('project_base_path', Path(__file__).parent)
-    project.set_property('pycharm_workspace_project_path', project.get_property('project_base_path'))
+    project.set_property('project_base_path', project_path)
+    project.set_property('pycharm_workspace_project_path', project_path)
 
 
 @init(environments='develop')
@@ -136,8 +138,8 @@ def pack_files(project):
     :param pybuilder.core.Project project: PyBuilder project instance
     :return: None
     """
-    package_path = sorted(Path(__file__).parent.glob('src/*'))[0]
-    resources_paths = sorted(package_path.glob('**'))
+    package_path = list(Path(project.get_property('dir_source_main_python')).glob('*'))[0]
+    resources_paths = sorted(package_path.glob('**'))[1:]
     project.package_data.update(
         { package_path.name: [str((path.relative_to(package_path) / '*').as_posix()) for path in resources_paths] })
 ```
