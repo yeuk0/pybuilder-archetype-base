@@ -48,7 +48,7 @@ def pack_files(project):
 	:return: None
 	"""
 	# https://github.com/pybuilder/pybuilder/issues/127#issuecomment-350513803
-	package_path = sorted(Path(__file__).parent.glob('src/main/python/*'))[0]
+	package_path = list(Path(__file__).parent.glob('src/main/python/*'))[0]
 	resources_paths = sorted(package_path.glob('resources/**'))
 	project.package_data.update(
 		{ package_path.name: [str((path.relative_to(package_path) / '*').as_posix()) for path in resources_paths] })
