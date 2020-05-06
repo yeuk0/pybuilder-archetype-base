@@ -108,12 +108,15 @@ def create_archetype_base(project, logger):
 	for package in project.get_property('base_packages').values():
 		builder.create_directory(project_path, package, True)
 
-	logger.info(msg.ARCHETYPE_EMPTY_FILE.format(file='LICENSE'))
-	builder.create_empty_file(Path('.'), 'LICENSE')
+	logger.info(msg.ARCHETYPE_EMPTY_FILE.format(file='__init__.py'))
+	builder.create_empty_file(project.get_property('base_directories')['SRC'] / project_path, '__init__.py')
 
 	logger.info(msg.ARCHETYPE_TEMPLATES_ROOT)
 	for template in project.get_property('base_templates_first_level').values():
 		builder.copy_file_templates(Path('.'), Path(__file__).parent, template)
+
+	logger.info(msg.ARCHETYPE_EMPTY_FILE.format(file='LICENSE'))
+	builder.create_empty_file(Path('.'), 'LICENSE')
 
 	logger.info(msg.ARCHETYPE_TEMPLATES_PACKAGE)
 	for template in project.get_property('base_templates_second_level').values():
