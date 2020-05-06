@@ -23,16 +23,16 @@ src
     |   ├── core  # Make as many scripts as packages in core (i.e. processing.py for core.processing)
     |   |   └── __init__.py
     |   └── __init__.py
-    ├── tests  # For every custom exception made
-    |   ├── __init__.py
-    |   └── example_test.py
     ├── utils  # For any kind of util used in the project
-    |   ├── loggers
+    |   ├── logging
     |   |   ├── __init__.py
     |   |   └── handlers.yml  # For custom logging handles (i.e. database logging)
     |   ├── __init__.py
     |   └── helpers.py
     └── __init__.py
+tests  # For every custom exception made
+├── __init__.py
+└── example_test.py
 .gitignore
 LICENSE # Empty file
 README.md
