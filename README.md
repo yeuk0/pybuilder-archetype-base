@@ -75,7 +75,7 @@ This will tell the plugin which is the project location in the filesystem. `proj
 Launch the task with:
 
 ```console
-(venv) C:\Users\foo\PycharmProjects\bar> pyb_ create_archetype_base
+(venv) C:\Users\foo\PycharmProjects\bar> pyb create_archetype_base
 ```
 
 ### `build.py` file recommended
