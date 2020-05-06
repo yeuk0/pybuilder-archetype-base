@@ -57,14 +57,12 @@ class Utils():
 		"""
 		with open(source, 'r') as source_file, open(dest, 'r+') as dest_file:
 			requirements = dict(line.split('==') for line in dest_file.readlines())
-			[print(line) for line in requirements]
 			for module in source_file:
 				if module in requirements.keys():
 					if source_file[module] > requirements[module]:
 						requirements[module] = source_file[module]
 				else:
 					requirements[module] = source_file[module]
-			[print(line) for line in requirements]
 			dest_file.writelines(requirements)
 
 	@staticmethod
